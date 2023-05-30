@@ -20,10 +20,10 @@ class Calculator {
         for (i in lines.indices) {
             val params = lines[i].split(",")
 
-                val id = params[0].toInt()
-                val x = params[1].toDouble()
-                val y = params[2].toDouble()
-                instance.add(Point(id, x, y))
+            val id = params[0].toInt()
+            val x = params[1].toDouble()
+            val y = params[2].toDouble()
+            instance.add(Point(id, x, y))
         }
 
         return instance
@@ -39,8 +39,8 @@ class Calculator {
 
 
     fun greedy(cities: ArrayList<Point>, index: Int): Double {
-        val visitedCities = BooleanArray(cities.size) { false }
-        visitedCities[index] = true
+        val visitedCities = BooleanArray(cities.size) { false } // easy way to create and set default value for boolean list
+        visitedCities[index] = true // used to be static 0 but be changed to dynamic to change results
         val tour = arrayListOf<Int>()
         tour.add(index + 1)
 
@@ -54,7 +54,7 @@ class Calculator {
 
             // Looking for smallest distance from city 1
             for (cityIndex in cities.indices) {
-                if (!visitedCities[cityIndex] && cityIndex != currentCityIndex) {
+                if (!visitedCities[cityIndex] && cityIndex != currentCityIndex) { // not visited and not same as current
                     val distance = getDistance(cities[currentCityIndex], cities[cityIndex])
                     if (distance < minDistance) {
                         minDistance = distance
